@@ -1,0 +1,14 @@
+{
+    "ProfilerEnabled": true,
+    "LogLevel": {LOGLEVEL},
+    "DefaultLogType": "fileLoggerDefault",
+    "AppName" : "restapi-",
+    "FileLogger": [
+        {
+            "Key": "fileLoggerDefault",
+            "Path": "/var/log/restapi/",
+            "FormatType" : "json",
+            "FileNamePrefix": "api-"       
+        }       
+    ]
+}
