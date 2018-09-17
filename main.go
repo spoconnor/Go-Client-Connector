@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 	//	_ "net/http/pprof"  // TODO
-	"pharos/client-connector/servers"
+	"go-client-connector/servers"
 )
 
 var (

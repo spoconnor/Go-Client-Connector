@@ -3,7 +3,7 @@ package connections
 import (
 	"log"
 	"net"
-	"pharos/client-connector/gopool"
+	"go-client-connector/gopool"
 	"testing"
 	"time"
 )

@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"io"
 	"log"
-	"pharos/client-connector/contracts"
+	"go-client-connector/contracts"
 	"strings"
 	"sync"
 	"time"

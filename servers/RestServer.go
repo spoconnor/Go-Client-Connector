@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"pharos/client-connector/connections"
-	contracts "pharos/client-connector/contracts"
+	"go-client-connector/connections"
+	contracts "go-client-connector/contracts"
 
 	"github.com/go-ozzo/ozzo-routing"
 	"github.com/go-ozzo/ozzo-routing/access"

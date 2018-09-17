@@ -10,8 +10,8 @@ import (
 
 	_ "net/http/pprof"
 
-	"pharos/client-connector/connections"
-	"pharos/client-connector/gopool"
+	"go-client-connector/connections"
+	"go-client-connector/gopool"
 )
 
 type WebSocketServer struct {
