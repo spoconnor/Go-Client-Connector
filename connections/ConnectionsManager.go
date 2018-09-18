@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"go-client-connector/contracts"
-	"go-client-connector/gopool"
+	"github.com/spoconnor/Go-Client-Connector/contracts"
+	"github.com/spoconnor/Go-Client-Connector/gopool"
 
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"

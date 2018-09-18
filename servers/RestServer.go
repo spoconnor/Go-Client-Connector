@@ -6,8 +6,8 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"go-client-connector/connections"
-	contracts "go-client-connector/contracts"
+	"github.com/spoconnor/Go-Client-Connector/connections"
+	contracts "github.com/spoconnor/Go-Client-Connector/contracts"
 
 	"github.com/go-ozzo/ozzo-routing"
 	"github.com/go-ozzo/ozzo-routing/access"

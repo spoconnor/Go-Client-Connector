@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"io"
 	"log"
-	"go-client-connector/contracts"
+	"github.com/spoconnor/Go-Client-Connector/contracts"
 	"strings"
 	"sync"
 	"time"
