@@ -10,7 +10,7 @@ import (
 	"time"
 
 	"github.com/spoconnor/Go-Client-Connector/contracts"
-	"github.com/spoconnor/Go-Client-Connector/gopool"
+	"github.com/spoconnor/Go-Common-Code/gopool"
 
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"

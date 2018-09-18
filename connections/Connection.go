@@ -6,10 +6,11 @@ import (
 	"encoding/json"
 	"io"
 	"log"
-	"github.com/spoconnor/Go-Client-Connector/contracts"
 	"strings"
 	"sync"
 	"time"
+
+	"github.com/spoconnor/Go-Client-Connector/contracts"
 
 	"github.com/gobwas/ws"
 	"github.com/gobwas/ws/wsutil"

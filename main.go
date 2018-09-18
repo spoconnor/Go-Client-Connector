@@ -1,3 +1,5 @@
+//go:generate swagger generate spec
+
 package main
 
 import (
@@ -8,6 +10,7 @@ import (
 	"time"
 	//	_ "net/http/pprof"  // TODO
 	"github.com/spoconnor/Go-Client-Connector/servers"
+	logging "github.com/spoconnor/Go-Common-Code/logging"
 )
 
 var (
@@ -19,7 +22,7 @@ var (
 )
 
 func main() {
-	SetupLog("client-connector", "info", "output.txt", true)
+	logging.SetupLog("client-connector", "info", "output.txt", true)
 	log.Println("Starting client-connector")
 
 	flag.Parse()

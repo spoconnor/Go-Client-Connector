@@ -3,9 +3,10 @@ package connections
 import (
 	"log"
 	"net"
-	"github.com/spoconnor/Go-Client-Connector/gopool"
 	"testing"
 	"time"
+
+	"github.com/spoconnor/Go-Client-Connector/gopool"
 )
 
 //--------------------------------------------------------
