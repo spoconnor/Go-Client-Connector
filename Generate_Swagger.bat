@@ -4,4 +4,4 @@
 @REM go install
 
 @REM swagger generate spec -o ./swagger.json
-swagger generate server -A client-connector
+swagger generate server -A Go-Client-Connector

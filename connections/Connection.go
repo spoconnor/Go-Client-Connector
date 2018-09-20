@@ -176,11 +176,13 @@ func (u *Connection) AwaitReply(id int) (*contracts.RpcResponse, error) {
 	return res, nil
 }
 
-func (u *Connection) writeErrorTo(req *contracts.RpcRequest, err contracts.RpcParams) error {
+func (u *Connection) writeErrorTo(req *contracts.RpcRequest, message string) error {
 	log.Println("[writeError]")
-	return u.write(contracts.RpcError{
-		ID:    req.ID,
-		Error: err,
+	return u.write(contracts.RpcResponse{
+		ID: req.ID,
+		Error: contracts.RpcError{
+			Message: message,
+		},
 	})
 }
 

@@ -24,10 +24,11 @@ const (
 
 // ConnectionsManager contains logic of connection interaction.
 type ConnectionsManager struct {
-	mu  sync.RWMutex
-	seq uint
-	us  []*Connection
-	ns  map[string]*Connection
+	mu     sync.RWMutex
+	seq    uint
+	nextId int
+	us     []*Connection
+	ns     map[string]*Connection
 
 	pool *gopool.Pool
 	out  chan []byte
@@ -37,9 +38,11 @@ type ConnectionsManager struct {
 func NewConnectionsManager(pool *gopool.Pool) *ConnectionsManager {
 	log.Printf("[NewConnectionsManager] Creating ConnectionsManager")
 	connections := &ConnectionsManager{
-		pool: pool,
-		ns:   make(map[string]*Connection),
-		out:  make(chan []byte, 1),
+		pool:   pool,
+		ns:     make(map[string]*Connection),
+		out:    make(chan []byte, 1),
+		seq:    1,
+		nextId: 1,
 	}
 
 	go connections.writer()
@@ -130,7 +133,7 @@ func (c *ConnectionsManager) Broadcast(method string, params contracts.RpcParams
 	w := wsutil.NewWriter(&buf, ws.StateServerSide, ws.OpText)
 	encoder := json.NewEncoder(w)
 
-	r := contracts.RpcRequest{Method: method, Params: params}
+	r := contracts.RpcRequest{ID: 0, Method: method, Params: params}
 	if err := encoder.Encode(r); err != nil {
 		return err
 	}
@@ -153,7 +156,8 @@ func (c *ConnectionsManager) SendToClient(
 	w := wsutil.NewWriter(&buf, ws.StateServerSide, ws.OpText)
 	encoder := json.NewEncoder(w)
 
-	r := contracts.RpcRequest{Method: method, Params: params}
+	r := contracts.RpcRequest{ID: c.nextId, Method: method, Params: params}
+	c.nextId++
 	if err := encoder.Encode(r); err != nil {
 		return nil, err
 	}
