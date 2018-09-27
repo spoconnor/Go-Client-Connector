@@ -19,12 +19,14 @@ type WebSocketServer struct {
 	ConnectionsManager *connections.ConnectionsManager
 	addr               string
 	ioTimeout          time.Duration
+	Listening          bool
 }
 
 func NetWebSocketServer(addr string, ioTimeout time.Duration, workers, queue int) *WebSocketServer {
 	w := &WebSocketServer{
 		addr:      addr,
 		ioTimeout: ioTimeout,
+		Listening: false,
 	}
 	// Make pool of X size, Y sized work queue and one pre-spawned
 	// goroutine.
@@ -115,6 +117,8 @@ func (w *WebSocketServer) Start() {
 	// accept is a channel to signal about next incoming connection Accept()
 	// results.
 	accept := make(chan error, 1)
+
+	w.Listening = true // TODO get from poller status?
 
 	// Subscribe to events about listener.
 	poller.Start(acceptDesc, func(e netpoll.Event) {

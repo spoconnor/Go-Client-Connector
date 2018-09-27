@@ -126,19 +126,6 @@ func (u *Connection) readResponse() (*contracts.RpcResponse, error) {
 		key := strings.TrimSpace(strings.TrimPrefix(message, KeyPrefix))
 		u.connectionsManager.SetConnectionKey(u, key)
 
-		//var toks = Encoding.UTF8.GetString(e.RawData).Split('\n');
-		//var message = toks.FirstOrDefault();
-		//var challenge = toks.Length > 1 ? toks[1] : null;
-
-		//if (message == Constants.KeyPlease)
-		//{
-		//sessionId = Constants.KeyPrefix + Key;
-		//auth = AuthorizationProvider?.GetAuthorization(challenge ?? sessionId);
-		//routingInfo = PrepareRoutingInfo();
-		//reply = string.Join("\n", new string[] { sessionId, auth, routingInfo });
-
-		//		webSocketClient.Post(Encoding.UTF8.GetBytes(reply));
-		//		Logger.Info("[WebSocketExchangeClient.webSocketClient_OnMessage] Connected to cloud with routing key: " + RoutingKey);
 		if err == io.EOF {
 			err = nil
 		}

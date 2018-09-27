@@ -18,8 +18,8 @@ import (
 
 const (
 	Forbidden = "Forbidden"
-	KeyPlease = "RoutingKeyPlease"
-	KeyPrefix = "RoutingKey:"
+	KeyPlease = "ClientKeyPlease"
+	KeyPrefix = "ClientKey:"
 )
 
 // ConnectionsManager contains logic of connection interaction.

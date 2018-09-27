@@ -17,11 +17,13 @@ import (
 
 type RestServer struct {
 	connectionsManager *connections.ConnectionsManager
+	Listening          bool
 }
 
 func NewRestServer(c *connections.ConnectionsManager) *RestServer {
 	r := &RestServer{
 		connectionsManager: c,
+		Listening:          false,
 	}
 	return r
 }
@@ -61,6 +63,7 @@ func (r *RestServer) Start() {
 	*/
 
 	http.Handle("/", router)
+	r.Listening = true // TODO get state from http somehow?
 	http.ListenAndServe(":9000", nil)
 	log.Println("Stopping Rest Server...")
 }

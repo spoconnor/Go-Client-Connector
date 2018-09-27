@@ -13,12 +13,20 @@ import (
 
 //-------------------------------------------------
 
+// @Title hello
+// @Description Test Rest service is running
+// @Success 200 {string} Reponse message
+// @Router /hello [get]
 func (r *RestServer) hello(c *routing.Context) error {
 	log.Println("[RestServer.hello]")
 	c.Write("Hello")
 	return nil
 }
 
+// @Title listConnections
+// @Description List all client connections
+// @Success 200 {array} Client connections
+// @Router /listConnections [get]
 func (r *RestServer) listConnections(c *routing.Context) error {
 	log.Println("[RestServer.listConnections]")
 	var res = r.connectionsManager.ListConnections()
@@ -26,6 +34,10 @@ func (r *RestServer) listConnections(c *routing.Context) error {
 	return nil
 }
 
+// @Title ping
+// @Description Test connection to a specified client
+// @Success 200 {string} Reponse message
+// @Router /ping/key/{key} [get]
 func (r *RestServer) ping(c *routing.Context) error {
 	log.Println("[RestServer.ping]")
 	key := c.Param("key")
@@ -37,6 +49,13 @@ func (r *RestServer) ping(c *routing.Context) error {
 	return err
 }
 
+// @Title jsonRpc
+// @Description Send a json rpc message to a specified client
+// @Accept json
+// @Param key path string true "Client Id"
+// @Param req body contracts.RpcRequest true "Rpc request"
+// @Success 200 {string} Reponse message
+// @Router /jsonRpc/key/{key} [get]
 func (r *RestServer) jsonRpc(c *routing.Context) error {
 	log.Println("[RestServer.jsonRpc]")
 	key := c.Param("key")

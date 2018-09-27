@@ -1,5 +1,11 @@
 //go:generate swagger generate spec
 
+// @APIVersion 1.0.0
+// @APITitle Go Client Connector
+// @APIDescription A websocket server
+// @Contact onewheel@gmail.com
+// @BasePath http://host:port/ClientConnector
+
 package main
 
 import (
